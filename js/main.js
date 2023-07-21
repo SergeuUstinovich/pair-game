@@ -1,6 +1,6 @@
 (() => {
     let timerId; // Переменная для setTimeout
-    let timeGame = 60; //Время игры
+    let timeGame = 180; //Время игры
     let numberOfCoincidences = 0; // Счетчик совпавших пар
     const timeCounter = document.getElementById('timeOut');
 
