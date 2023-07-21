@@ -1,6 +1,6 @@
 (() => {
     let timerId; // Переменная для setTimeout
-    let timeGame = 180; //Время игры
+    let timeGame = 1000; //Время игры
     let numberOfCoincidences = 0; // Счетчик совпавших пар
     const timeCounter = document.getElementById('timeOut');
 
@@ -67,20 +67,34 @@
                 numberFormCard.input.value = ''; //очищает значение в поле после отработки функции
                 numberFormCard.button.disabled = true;//включает нажатие кнопки
                 formContainer.innerHTML = ''; 
+                if(validNumber == 2) {
+                  timeGame = 20;
+                  
+                } else if(validNumber == 4) {
+                  timeGame = 60;
+                  
+                } else if (validNumber == 6) {
+                  timeGame = 120;
+                  
+                } else if (validNumber == 8) {
+                  timeGame = 180;
+                  
+                } else if (validNumber == 10) {
+                  timeGame = 360;
+                }
                 timerId = setInterval(() => { //время продолжительности игры, когда таймер выходит игра заканчивается
                   if (timeGame === 0) {
                       clearInterval(timerId);
                       alert('Время игры закончилось');
                       window.location.reload();
                   }
-                  updateCountdown(timeGame);
+                    updateCountdown(timeGame);
                   timeGame--;
               }, 1000);
-              updateCountdown(timeGame);
-              startOfGame(Math.pow(validNumber, 2));
-            }
-            
-        });
+              
+                startOfGame(Math.pow(validNumber, 2));
+              }
+            });
     }
 
     function updateCountdown(timeGame) {
